@@ -13,38 +13,21 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		if @user.user_type == "Player"
-			@user = User.new(player_params)
-				if @user.save
-					redirect_to user_path
-				else
-					render "new"
-				end
-		else if @user.user_type == "Instructor"
-			@user = User.new(instructor_params)
-				if @user.save
-					redirect_to user_path
-				else
-					render "new"
-				end
+		@user = User.new(user_params)
+
+		if @user.save
+			# If the save is successful, automatically log the user in
+			session[:user_id] = @user.id.to_s
+			redirect_to users_path(@user)
+		else
+			render 'new'
 		end
-	end
-
-	def edit
-	end
-
-	def update
-	end
-
-	def destroy
 	end
 
 	private
 
-	def player_params
-	end
-
-	def instructor_params
+	def user_params
+		params.require(:user).permit(:name, :user_type, :email, :zip, :gender, :password, :password_confirmation)
 	end
 
 end

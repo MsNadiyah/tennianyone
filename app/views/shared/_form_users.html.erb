@@ -29,6 +29,16 @@
 			</div>
 
 			<div class="pure-control-group">
+				<%= f.label :password %>
+				<%= f.password_field :password, :placeholder => "Enter a password" %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation, :placeholder => "Re-enter your password" %>
+			</div>
+
+			<div class="pure-control-group">
 				<%= f.label :user_type, "Player" %>
 				<%= f.radio_button :user_type, "Player" %>
 				<%= f.label :user_type, "Teaching Pro" %>

@@ -1,0 +1,30 @@
+<!-- Displays a single pro's information -->
+
+<!-- PLACEHOLDER header partial -->
+<header>
+	<h2>User type: <%= @user.user_type %>
+</header>
+
+	<h1><%= @user.name %></h1>
+
+<!-- Section for a player's header information -->
+	<div class="user-header">
+		<p> Placeholder for the beginning of a player's profile </p>
+		<ul class="user-info-part1">
+			<li>Gender: <%= @user.gender %></li>
+			<li>Location: <%= @user.zip %></li> 
+			<li>Email: <%= @user.email %></li>
+		</ul>
+	</div>
+
+<!-- Section for a player's additional info -->
+	<div class="user-body">
+		<p> Placeholder for the rest of a user's profile</p>
+		<ul class="user-info-part2">
+			
+		</ul>
+	</div>
+
+<button> <%= link_to "Message user", "/" %> </button>
+
+<button> <%= link_to "Back to Search Results", users_path %> </button>
