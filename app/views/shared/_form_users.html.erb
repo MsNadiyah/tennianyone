@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+<!-- Form partial for new players -->
+
+	<%= form_for @user, html: { class: "pure-form pure-form-aligned instructor-form" } do |f| %>
+
+		<div class="new-form-part1">
+			
+			<div class="pure-control-group">
+				<%= f.label :name, "My name is: " %> 
+				<%= f.text_field :name, :placeholder => "Serena Williams" %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :gender_female, "Female" %>
+				<%= f.radio_button :gender, "Female" %>
+				<%= f.label :gender_male, "Male" %>
+				<%= f.radio_button :gender, "Male" %>
+			</div>
+			
+			<div class="pure-control-group">
+				<%= f.label :zip, "I live in: " %> 
+				<%= f.text_field :zip, :placeholder => 10012 %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :email, "My email address: " %> 
+				<%= f.text_field :email, :placeholder => "serena.williams@gmail.com" %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :user_type, "Player" %>
+				<%= f.radio_button :user_type, "Player" %>
+				<%= f.label :user_type, "Teaching Pro" %>
+				<%= f.radio_button :user_type, "Instructor" %>
+			</div>
+
+			<div class="pure-button pure-button-primary">
+				<%= f.submit "Join TennisAnyone" %>
+			</div>
+		</div>
+
+	<% end %>
