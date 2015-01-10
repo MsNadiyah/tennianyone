@@ -8,6 +8,10 @@ class User
   field :gender, type: String
   field :password_digest, type: String
 
+  # To facilitate CarrierWave and the creation of Avaatars
+  mount_uploader :image, AvatarUploader
+
+  # Creates a setter function for the "password" field (which isn't stored in the database as a string)
   attr_reader :password
 
   # RELATIONSHIPS 
@@ -41,6 +45,6 @@ class User
   validates :email, uniqueness: { case_sensitive: false }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :zip, presence: true, length: { is: 5 } 
   validates :gender, presence: true
-  validates :password, presence: true, length: { in: 6..32 }, confirmation: true
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true
 
 end

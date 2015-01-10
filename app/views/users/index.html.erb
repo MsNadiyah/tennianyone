@@ -11,6 +11,7 @@
 	<!-- Display the following for each tennis player -->
 	<li>
 		<strong><%= user.name %></strong> 
+				<%= image_tag user.image.url(:thumb) %>
 		<ul>
 			
 			<li> <strong>User Type: </strong><%= user.user_type %> </li>	

@@ -1,0 +1,41 @@
+<h1>Hi, <%= @user.name %></h1>
+
+<%= form_for @user do |f| %>
+
+	<div class="new-form-part1">
+			
+			<div class="pure-control-group">
+				<%= f.label :name, "My name is: " %> 
+				<%= f.text_field :name %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :gender_female, "Female" %>
+				<%= f.radio_button :gender, "Female" %>
+				<%= f.label :gender_male, "Male" %>
+				<%= f.radio_button :gender, "Male" %>
+			</div>
+			
+			<div class="pure-control-group">
+				<%= f.label :zip, "I live in: " %> 
+				<%= f.text_field :zip %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :email, "My email address: " %> 
+				<%= f.text_field :email %>
+			</div>
+
+			<div class="pure-control-group">
+				<%= f.label :user_type, "Player" %>
+				<%= f.radio_button :user_type, "Player" %>
+				<%= f.label :user_type, "Teaching Pro" %>
+				<%= f.radio_button :user_type, "Instructor" %>
+			</div>
+
+			<div class="pure-button pure-button-primary">
+				<%= f.submit "Save changes" %>
+			</div>
+		</div>
+
+<% end %>

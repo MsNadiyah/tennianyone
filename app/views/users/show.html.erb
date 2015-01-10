@@ -8,6 +8,10 @@
 	<h1><%= @user.name %></h1>
 
 <!-- Section for a player's header information -->
+	<div class="user-image col-md-2">
+		<%= image_tag @user.image.url(:profile) %>
+	</div>
+
 	<div class="user-header">
 		<p> Placeholder for the beginning of a player's profile </p>
 		<ul class="user-info-part1">

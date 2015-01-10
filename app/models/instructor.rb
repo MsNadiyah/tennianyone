@@ -15,3 +15,5 @@ class Instructor
   embedded_in :user
   
 end
+
+
