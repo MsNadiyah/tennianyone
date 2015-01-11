@@ -8,7 +8,7 @@ class Instructor
   field :lesson_speciality, type: String
   field :rate_hourly, type: Integer
   field :rate_clinic, type: Integer
-  field :pro_availability, type: String
+  field :availability, type: String
 
   # RELATIONSHIPS
 

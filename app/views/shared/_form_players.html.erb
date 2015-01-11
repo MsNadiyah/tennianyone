@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+<!-- Creating a player profile partial -->
+
+<div class="new-form-part2">
+
+	<%= form_for @player, html: { class: "pure-form pure-form-aligned player-form"} do |f| %>
+
+		<div class="pure-control-group">
+			<%= f.label :blurb %>
+			<%= f.text_area :blurb, placeholder: "Tell us about tennis history" %>
+		</div>
+
+		<div class="pure-control-group">
+			<%= f.label :level %>
+			<%= f.select(:level, options_for_select([
+				["2.0", 1],
+				["2.5", 2],
+				["3.0", 3],
+				["3.5", 4],
+				["4.0", 5],
+				["4.5", 6],
+				["5.0", 7],
+				["5.5", 8],
+				["Open", 8]],
+				selected: :level)) %>
+		</div>
+
+		<div class="pure-control-group">
+			<!-- Singles, Doubles, Hitting, Drills -->
+			<%= f.label :type_of_play %>
+			<%= f.check_box(:type_of_play, options = {
+				"Singles",
+				"Doubles",
+				"Hitting",
+				"Drills"
+				} %>
+		</div>
+
+		<div class="pure-control-group"> 
+			<!-- Weekday Mornings, Weekday Evenings, Weekdays (all), Weekend Mornings, Weekend Evenings, Weekends (all) -->
+			<%= f.label :availability %>
+			<%= f.check_box :availability, %>
+		</div>
+
+		<div class="pure-control-group">
+			<%= f.label :secret_weapon, "My best stroke is my: " %>
+			<%= f.select(:secret_weapon, options_for_select([
+				["Forehand", 1],
+				["Backhand", 2],
+				["Serve", 3],	
+				["Net game", 4],
+				["Spin", 5],
+				["Endurance/fitness", 7]],
+				include_blank: true, 
+				selected: :secret_weapon ))%>
+		</div>
+
+		<div class="pure-control-group">
+			<%= f.label :interest_lessons, "I am interested in lessons" %>
+			<%= f.check_box :interest_lessons %>
+			<p class="clarifying-info"> Checking this box will allow teaching pro's to message you</p>
+		</div>
+		
+
+		<div class="pure-control-group">
+			<%= f.label :interest_league, "I am interested in joining a league" %>
+			<%= f.check_box :interest_league, %><p class="clarifying-info"> Checking this box will allow league organizers to message you</p>
+		</div>
+
+		<div class="pure-button pure-button-primary">
+			<%= f.submit "Submit" %>
+		</div>
+
+	<% end %>
+
+</div>

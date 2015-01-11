@@ -5,10 +5,44 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- Facilitates render scaling using Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
 
-<%= yield %>
+	<header>
+
+		<!-- Creating the navigation bar -->
+
+		<div class="header_menu">
+			<ul>
+				<li><%= link_to "Tennis Anyone", root_path %> </li>
+				<% if current_user %>		
+					<li><span>Hi <%= current_user.name %>!</span></li>
+					<li><%= link_to "Log out", logout_path, method: :delete %></li>
+				<% else %>
+					<li><%= link_to "Sign up", signup_path %></li>
+					<li><%= link_to "Log in", login_path %></li>
+				<% end %>
+				<li><%= link_to "Search", users_path %></li>
+			</ul>
+		</div>
+
+	</header>
+
+	<body>
+	</body>
+
+	<footer>
+
+		<div class="footer_menu">
+			
+		</div>
+	</footer>
+	
+<%= yield %>  <!-- Should stay at the bottom of the page --> 
 
 </body>
 </html>

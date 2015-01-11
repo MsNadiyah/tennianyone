@@ -1,21 +1,24 @@
 source 'https://rubygems.org'
 
-##### APP-SPECIFIC GEMS
-gem 'mongoid', '~> 4.0.0'
+##### APP-SPECIFIC GEMS #####
 
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'mongoid', '~> 4.0.0' # For the MongoDB
 
-gem 'bcrypt', '~> 3.1.9'
+gem 'bootstrap-sass', '~> 3.2.0' # For styling with Bootstrap
 
-gem 'carrierwave'
+gem 'bcrypt', '~> 3.1.9' # For password encryption
 
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave' # For photo uploads
 
-gem 'fog' # Required for Amazon S3
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid' # For interaction between MongoDB and Carrierwave
 
-gem 'mini_magick' # Required for gem processing
+gem 'mini_magick' # For use with CarrierWave image uploading and manamgement
 
-##### PRE-INSTALLED GEMS
+gem 'fog' # For Amazon S3 scalable storage
+
+gem 'figaro' # For protecting partner keys (e.g. Amazon S3/EC2)
+
+##### PRE-INSTALLED GEMS #####
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
