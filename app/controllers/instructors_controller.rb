@@ -8,6 +8,14 @@ class InstructorsController < ApplicationController
 
 	def create
 		@instructor = Instructor.new(instructor_params)
+		
+		if @instructor.save
+			flash[:success] = "Welcome to Tennis Anyone!"
+			redirect_to instructors_path(@instructor)
+		else
+			flash[:danger] = "Error. Please try again"
+			render "new"
+		end
 	end
 
 	def show
@@ -32,6 +40,12 @@ class InstructorsController < ApplicationController
 
 	def destroy
 	end
+
+	def lesson_type_params
+		lesson_type_params = params["Private", "Group/Clinic"]
+	end
+
+
 	
 	private
 	

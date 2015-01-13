@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 		# go into the login hash and grab password
 		if user && user.authenticate(params[:login][:password])
 			session[:user_id] = user.id.to_s
-			redirect_to users_path
+			redirect_to user_path(user)
 		else
 			redirect_to signup_path
 		end
@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
 	# Logout
 	def destroy
 		session.delete(:user_id)
+		
 		redirect_to root_path
 	end
 

@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 		if @user.save
 			# If the save is successful, automatically log the user in
 			session[:user_id] = @user.id.to_s
+			flash[:success] = "Your profile has been created!"
 			redirect_to users_path(@user)
 		else
 			render 'new'
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
+		# current_user.User.find(params[:id])
 	end
 
 	def update
@@ -40,17 +42,23 @@ class UsersController < ApplicationController
 
 		if @user.update_attributes(user_params)
 			flash[:success] = "Your profile has been updated!"
-			redirect_to users_path(@user)
+			redirect_to user_path(@user)
 		else
-			render 'edit'
+			render "edit"
 		end
 	end
 
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
+		session.delete(:user_id)
+		@user.delete
+
 		# Consider adding pop up mesage to confirm profile deletion
 		redirect_to users_path
+	end
+
+	def update_profile
+		@player = Player.new		
 	end
 
 	#######

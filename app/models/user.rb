@@ -19,6 +19,9 @@ class User
   embeds_one :instructor
   embeds_one :player
 
+  accepts_nested_attributes_for :instructor # Allows a user to create an associated instructor profile
+  accepts_nested_attributes_for :player # Allows a user to create an associated player profile
+
   # METHODS
 
   def password=(unencrypted_password)
@@ -44,7 +47,7 @@ class User
   validates :user_type, presence: true
   validates :email, uniqueness: { case_sensitive: false }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :zip, presence: true, length: { is: 5 } 
-  validates :gender, presence: true
-  validates :password, presence: true, length: { minimum: 6 }, confirmation: true
+  validates :gender, presence: true 
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true, on: :create
 
 end

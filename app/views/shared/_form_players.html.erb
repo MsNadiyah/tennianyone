@@ -8,11 +8,11 @@
 
 		<div class="pure-control-group">
 			<%= f.label :blurb %>
-			<%= f.text_area :blurb, placeholder: "Tell us about tennis history" %>
+			<%= f.text_area :blurb, placeholder: "Tell us about your tennis history." %>
 		</div>
 
 		<div class="pure-control-group">
-			<%= f.label :level %>
+			<%= f.label :level, "My USTA level is: " %>
 			<%= f.select(:level, options_for_select([
 				["2.0", 1],
 				["2.5", 2],
@@ -22,25 +22,44 @@
 				["4.5", 6],
 				["5.0", 7],
 				["5.5", 8],
-				["Open", 8]],
-				selected: :level)) %>
+				["Open", 9]],
+				selected: :level), { :include_blank => true }) %>
 		</div>
 
 		<div class="pure-control-group">
 			<!-- Singles, Doubles, Hitting, Drills -->
-			<%= f.label :type_of_play %>
-			<%= f.check_box(:type_of_play, options = {
-				"Singles",
-				"Doubles",
-				"Hitting",
-				"Drills"
-				} %>
+			<%= f.label :type_of_play, "I would like to play/do: " %>
+			<%= f.select(:type_of_play, options_for_select([
+				["Singles", 1],
+				["Doubles", 2],
+				["Hitting", 3],
+				["Drills", 4]],
+				selected: :type_of_play), { :multiple => true, :include_blank => true }) %>
 		</div>
 
 		<div class="pure-control-group"> 
 			<!-- Weekday Mornings, Weekday Evenings, Weekdays (all), Weekend Mornings, Weekend Evenings, Weekends (all) -->
-			<%= f.label :availability %>
-			<%= f.check_box :availability, %>
+			<%= f.label :availability, "I am available to play: " %>
+			<%= f.select(:availability, options_for_select([
+				["Weekday Mornings", 1],
+				["Weekday Evenings", 2],
+				["Weekday (all)", 3],
+				["Weekend Mornings", 4],
+				["Weekend Evenings", 5],
+				["Weekend (all)", 6]],
+				selected: :availability), { :multiple => true, :include_blank => true }) %>
+		</div>
+
+		<div class="pure-control-group">
+			<%= f.label :goal, "I most want to improve my: " %>
+			<%= f.select(:secret_weapon, options_for_select([
+				["Forehand", 1],
+				["Backhand", 2],
+				["Serve", 3],	
+				["Net game", 4],
+				["Spin", 5],
+				["Endurance/fitness", 6]], 
+				selected: :goal), { :multiple => true, :include_blank => true })%>
 		</div>
 
 		<div class="pure-control-group">
@@ -51,21 +70,19 @@
 				["Serve", 3],	
 				["Net game", 4],
 				["Spin", 5],
-				["Endurance/fitness", 7]],
-				include_blank: true, 
-				selected: :secret_weapon ))%>
+				["Endurance/fitness", 6]], 
+				selected: :secret_weapon), { :multiple => true, :include_blank => true })%>
 		</div>
 
 		<div class="pure-control-group">
 			<%= f.label :interest_lessons, "I am interested in lessons" %>
 			<%= f.check_box :interest_lessons %>
-			<p class="clarifying-info"> Checking this box will allow teaching pro's to message you</p>
 		</div>
 		
 
 		<div class="pure-control-group">
-			<%= f.label :interest_league, "I am interested in joining a league" %>
-			<%= f.check_box :interest_league, %><p class="clarifying-info"> Checking this box will allow league organizers to message you</p>
+			<%= f.label :interest_league, "I am interested in joining a league:" %>
+			<%= f.check_box :interest_league %>
 		</div>
 
 		<div class="pure-button pure-button-primary">

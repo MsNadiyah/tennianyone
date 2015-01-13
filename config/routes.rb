@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # resources :instructors, except: [:index, ]
 
-
+  get 'update_profile/:id' => 'users#update_profile', as: :update_profile
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

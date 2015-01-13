@@ -8,13 +8,13 @@
 	<h1><%= @user.name %></h1>
 
 <!-- Section for a player's header information -->
-	<div class="user-image col-md-2">
+	<div class="user-image col-md-2 img-responsive">
 		<%= image_tag @user.image.url(:profile) %>
 	</div>
 
 	<div class="user-header">
-		<p> Placeholder for the beginning of a player's profile </p>
 		<ul class="user-info-part1">
+			<li>I am a/an: <%= @user.user_type %></li>
 			<li>Gender: <%= @user.gender %></li>
 			<li>Location: <%= @user.zip %></li> 
 			<li>Email: <%= @user.email %></li>
@@ -23,12 +23,19 @@
 
 <!-- Section for a player's additional info -->
 	<div class="user-body">
-		<p> Placeholder for the rest of a user's profile</p>
+		<p> Placeholder for player/pro's profile</p>
 		<ul class="user-info-part2">
-			
+
 		</ul>
 	</div>
+	<%= current_user %>
 
-<button> <%= link_to "Message user", "/" %> </button>
+	<% if logged_in? && current_user.id == @user.id%>		
+		<button><%= link_to "Edit my profile", edit_user_path(@user) %></button>
+		<button><%= link_to "Delete my profile", user_path(@user), method: :delete, data: { confirm: "Are you sure?? " } %></button>
+	<% else %>
+		<button><%= link_to "Message user", "/" %></button>
+	<% end %>
 
-<button> <%= link_to "Back to Search Results", users_path %> </button>
+<button><%= link_to "Back to Search Results", users_path %> </button>
+<button><%= link_to "Manage my profile", update_profile_path(@user) %> </button>

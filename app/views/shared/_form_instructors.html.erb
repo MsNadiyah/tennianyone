@@ -14,7 +14,7 @@
 				</div> 
 
 				<div class="pure-control-group">
-					<%= f.label :highest_level %>
+					<%= f.label :highest_level, "I have played as a: " %>
 					<%= f.select(:highest_level, options_for_select([
 						["Competitive Junior", 1],
 						["Collegiate/NCAA", 2],
@@ -24,64 +24,62 @@
 
 				<div class="pure-control-group">
 					<!-- Private, Group/Clinics -->
-					<%= f.label :lesson_type %>
-						<p>Check all that apply</p>
-					<%= f.checkbox(:lesson_type, "Private" %>
-					<%= f.checkbox(:lesson_type, "Group/Clinics" %>
+					<%= f.label :lesson_type, "I teach: " %>
+						<p>Select all that apply</p>
+					<%= f.select(:lesson_type, options_for_select([
+						["Private", "Private"],
+						["Group", "Group"]],
+						selected: :lesson_type), { :multiple => true, :include_blank => true}) %>
+				</div>
+
+				<div class="pure-control-group">
+					<%= f.label :lesson_speciality, "My speciality is teaching: " %> 
+					<%= f.select(:lesson_speciality, options_for_select([
+					["Groundstrokes", 1],
+					["Forehand", 2],
+					["Backhand", 3],
+					["Serve", 4],
+					["Net game", 5],
+					["Spin", 6],
+					["Endurance/fitness", 7]],
+					selected: :lesson_type), { :multiple => true, :include_blank => true }) %>
 				</div>
 
 				<div class="pure-control-group">
 					<!-- Children, Competitive Juniors, Collegiate players, Adults -->
-					<%= f.label :lesson_ages %>
-						<p>Check all that apply</p>
-					<%= f.checkbox(:lesson_ages, "Children") %>
-					<%= f.checkbox(:lesson_ages, "Competitive Juniors") %>
-					<%= f.checkbox(:lesson_ages, "Adults") %>
+					<%= f.label :lesson_ages, "I teach students that are: " %>
+						<p>Select all that apply</p>
+					<%= f.select(:lesson_ages, options_for_select([
+						["Children", 1],
+						["Competitive Juniors", 2],
+						["Adults", 3]],
+						selected: :lesson_ages), { :multiple => true, :include_blank => true }) %>
 				</div>
 
 				<div class="pure-control-group">
-					<!-- Groundstrokes, Net game, Serve, Fitness/Endurance, Spin -->
-					<%= f.label :lesson_speciality %>
-						<p>Check all that apply</p>
-					<%= f.checkbox(:lessons_speciality, "Groundstrokes") %>
-					<%= f.checkbox(:lessons_speciality, "Net game") %>
-					<%= f.checkbox(:lessons_speciality, "Serve") %>
-					<%= f.checkbox(:lessons_speciality, "Top Spin/Slice") %>
-					<%= f.checkbox(:lessons_speciality, "Fitness/Endurance") %>
-					
-				</div>
-				
-				<div class="pure-control-group">
-					<!-- Starting hourly rate -->
-					<%= f.label :rate_hourly %>
-					<%= f.number :rate_hourly, placeholder: "For example, 50.00" %>
+					<%= f.label :rate_hourly, "Private lessons start at:  " %> 
+					<%= f.text_field(:rate_hourly, :placeholder => 'Enter "50" for $50.00/hour') %>
 				</div>
 
 				<div class="pure-control-group">
-					<!-- Starting rate for an hour-long clinic -->
-					<%= f.label :rate_clinic %>
-					<%= f.number :rate_clinic, placeholder: "For example, 100.00" %>
+					<%= f.label :rate_clinic, "Group lessons/clinics start at: " %> 
+					<%= f.text_field(:rate_clinic, :placeholder => 'Enter "50" for $50.00/hour') %>
 				</div>
 
 				<div class="pure-control-group">
-					<!-- When are you available to teach -->
-					<%= f.label :availability %>
-						<p>Check all that apply </p>
-					<%= f.check_box(:availability, "Weekday Mornings") %>
-					<%= f.check_box(:availability, "Weekday Evenings") %>
-					<%= f.check_box(:availability, "Weekdays (all)") %>
-					<%= f.check_box(:availability, "Weekend Mornings") %>
-					<%= f.check_box(:availability, "Weekend Evenings") %>
-					<%= f.check_box(:availability, "Weekend (all)") %>
+					<%= f.label :availability, "I am available: " %> 
+					<%= f.select(:availability,  options_for_select([
+						["Weekday AMs", 1],
+						["Weekday PMs", 2],
+						["Weekday", 3],
+						["Weekend AMs", 4],
+						["Weekend PMs", 5],
+						["Weekend", 6]],
+						selected: :pro_availability), { multiple: :true, include_blank: :true}) %>
 				</div>
 
-				<div class="pure-button">
+					<div class="pure-button">
 					<%= f.submit "Submit" %>
-				</div>	
-
-				<!-- Skip this section of the player profile -->
-				<div class="pure-button pure-button-primary">
-					<%= f.button "Skip this step", link_to: user_path(@user) %>
 				</div>	
 
 			</form>
