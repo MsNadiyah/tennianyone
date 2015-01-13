@@ -12,36 +12,40 @@
 </head>
 <body>
 
-	<header>
+	<div class="container-fluid">
 
-		<!-- Creating the navigation bar -->
+		<header class="row">
 
-		<div class="header_menu">
-			<ul>
-				<li><%= link_to "Tennis Anyone", root_path %> </li>
-				<% if current_user %>		
-					<li><span>Hi <%= current_user.name %>!</span></li>
-					<li><%= link_to "My profile", user_path(current_user) %></li>
-					<li><%= link_to "Log out", logout_path, method: :delete %></li>
-				<% else %>
-					<li><%= link_to "Sign up", signup_path %></li>
-					<li><%= link_to "Log in", login_path %></li>
-				<% end %>
-				<li><%= link_to "Search", users_path %></li>
-			</ul>
-		</div>
+			<!-- The navigation bar -->
 
-	</header>
+		<nav class="navbar navbar-inverse">
 
-	<body>
-	</body>
+			<div class="navbar-header navbar-fixed-top">
+				
+					<div class="navbar-brand"><%= link_to "Tennis Anyone", root_path %> </div>
+						<ul class="nav navbar-nav">
+							<% if current_user %>
+								<li class="navbar-text">Hi <%= current_user.name %>!</li>
+								<li class="pull-left"><%= link_to "My profile", user_path(current_user) %></li>
+								<li class="pull-leftt"><%= link_to "Log out", logout_path, method: :delete %></li>
+							<% else %>
+								<li class="pull-right"><%= link_to "Sign up", signup_path %></li>
+								<li class="pull-right"><%= link_to "Log in", login_path %></li>
+							<% end %>
+								<li class="pull-right"><%= link_to "Search", users_path %></li>
+						</ul>
+			</div>
 
-	<footer>
+		</nav>
 
-		<div class="footer_menu">
-			
-		</div>
-	</footer>
+		</header>
+
+		<footer class="row">
+
+			<div class="footer_menu">
+				
+			</div>
+		</footer>
 	
 <%= yield %>  <!-- Should stay at the bottom of the page --> 
 

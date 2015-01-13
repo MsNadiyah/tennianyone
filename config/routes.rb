@@ -2,10 +2,17 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
+  # STATIC PAGES ROUTES
+
+  get '/home' => 'static_pages#home'
+
   resources :users
   resources :instructors
   resources :players
 
+
+
+  # LOGIN PAGE ROUTES
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout'=> 'sessions#destroy'

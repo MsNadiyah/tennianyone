@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-	# home page
+	# Displays the home page
 	def home
 	end
 
