@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
+
 ##### APP-SPECIFIC GEMS #####
 
 gem 'mongoid', '~> 4.0.0' # For the MongoDB
@@ -17,6 +19,10 @@ gem 'mini_magick' # For use with CarrierWave image uploading and manamgement
 gem 'fog' # For Amazon S3 scalable storage
 
 gem 'figaro' # For protecting partner keys (e.g. Amazon S3/EC2)
+
+gem 'rails_12factor', group: :production # needed for Heroku
+
+gem 'thin', group: :production # needed for Heroku (makes it faster and lets more people access simultaneously)
 
 ##### PRE-INSTALLED GEMS #####
 
